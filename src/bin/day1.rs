@@ -25,7 +25,6 @@ fn main() -> Result<()> {
                 password += 1;
             }
         } else {
-            print!("{dir}{n}\t");
             #[allow(clippy::collapsible_if)]
             if pos > 0 {
                 password += pos / 100;
@@ -39,7 +38,6 @@ fn main() -> Result<()> {
                 password += pos.abs() / 100;
                 pos = pos.rem_euclid(100);
             }
-            println!("{pos} {password}");
         }
     }
 
