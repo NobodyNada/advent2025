@@ -16,7 +16,7 @@ fn main() -> Result<()> {
 
         for id in l..=r {
             let s = id.to_string();
-            let max_substr_len = s.len() / 2;
+            let max_substr_len = s.len().div_ceil(2);
             let min_substr_len = if c.part1 { max_substr_len } else { 1 };
             for substr_len in min_substr_len..=max_substr_len {
                 if is_match(&s, substr_len) {
@@ -33,7 +33,7 @@ fn main() -> Result<()> {
 }
 
 fn is_match(s: &str, substr_len: usize) -> bool {
-    if !s.len().is_multiple_of(substr_len) {
+    if s.len() == substr_len || !s.len().is_multiple_of(substr_len) {
         return false;
     }
     for offset in (substr_len..s.len()).step_by(substr_len) {
