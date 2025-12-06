@@ -164,7 +164,7 @@ fn retrieve_input() -> Result<impl Read> {
 
     // Input file does not exist, download it
     let mut session = match std::fs::read_to_string("session.txt") {
-        Ok(s) => s,
+        Ok(s) => s.trim().to_string(),
         Err(e) if e.kind() == std::io::ErrorKind::NotFound => {
             bail!("No input file and session.txt is not present")
         }
